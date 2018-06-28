@@ -1,0 +1,77 @@
+﻿<Window x:Class="proj.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:proj"
+        mc:Ignorable="d"
+        Title="Textibry" Height="402" Width="509" MinWidth="400" MinHeight="330" WindowStartupLocation="CenterScreen" >
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100" MaxWidth="200"/>
+            <ColumnDefinition Width="2*" MinWidth="200"/>
+        </Grid.ColumnDefinitions>
+        <RichTextBox x:Name="richTextBox" Grid.Column="1" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch"  Margin="5"   SelectionChanged="SynchronizeWith">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text="RichTextBox"/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Top"  Margin="5,5,0,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="sbutton" Margin="5,0" VerticalAlignment="Center" HorizontalContentAlignment="Stretch"  Click="Save_Executed">
+                    <Grid >
+                        <Label Content="Save"  HorizontalAlignment="Center"  />
+                    </Grid>
+                </Button>
+
+                <Button x:Name="lbutton" Margin="5,0" VerticalAlignment="Center" HorizontalContentAlignment="Stretch"  Grid.Column="1" Click="Open_Executed">
+                    <Grid >
+                        <Label Content="Load"  HorizontalAlignment="Center"  />
+                    </Grid>
+                </Button>
+            </Grid>
+
+            <ToggleButton x:Name="button" HorizontalAlignment="Stretch" VerticalAlignment="Center" Command="EditingCommands.ToggleBold" CommandTarget="{Binding ElementName=richTextBox}"  Margin="10,0" HorizontalContentAlignment="Stretch">
+                <Grid >
+                    <Label Content="Bold"  HorizontalAlignment="Center" />
+                </Grid>
+            </ToggleButton>
+
+            <ToggleButton x:Name="button1" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Command="EditingCommands.ToggleItalic" CommandTarget="{Binding ElementName=richTextBox}"   Margin="10,0" HorizontalContentAlignment="Stretch" Grid.Row="1">
+                <Grid  >
+                    <Label Content="Italic" HorizontalAlignment="Center"  />
+                </Grid>
+            </ToggleButton>
+
+            <ToggleButton x:Name="button2" HorizontalAlignment="Stretch" VerticalAlignment="Center"  Command="EditingCommands.ToggleUnderline" CommandTarget="{Binding ElementName=richTextBox}"   Margin="10,0" HorizontalContentAlignment="Stretch" Grid.Row="2">
+                <Grid  >
+                    <Label Content="Underline" HorizontalAlignment="Center"  />
+                </Grid>
+            </ToggleButton>
+
+            <ComboBox x:Name="cmb1" Grid.Row="3" Margin="10,5" SelectionChanged="cmbFontFamily_SelectionChanged"/>
+            <ComboBox x:Name="cmb2" Grid.Row="4" Margin="10,5" IsEditable="True" TextBoxBase.TextChanged="cmbFontSize_TextChanged"/>
+
+        </Grid>
+        <Label x:Name="label" Content="" HorizontalAlignment="Left" Margin="74,323,0,0" VerticalAlignment="Top" Foreground="White"/>
+
+
+    </Grid>
+</Window>
